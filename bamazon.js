@@ -25,6 +25,25 @@ function createProduct() {
         },
         function(err, res) {
             console.log(res.affectedRows + ' product inserted');
+            updateProduct();
         }
     )
-}
+    console.log(query.sql);
+};
+
+function updateProduct() {
+    var query = connection.query(
+        'update products set ? where ?',
+        [
+            {
+                quantity: 500
+            },
+            {
+                id: 7
+            }
+        ],
+        function(err, res) {
+            console.log(res.affectedRows)
+        }
+    );
+};
